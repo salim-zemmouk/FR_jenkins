@@ -1,6 +1,5 @@
 package net.bsfconsulting.bibliothequeapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +27,5 @@ public class Loan {
     private User user;
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
-    @JsonBackReference
     private Book book;
 }
