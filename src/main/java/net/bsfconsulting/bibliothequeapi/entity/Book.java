@@ -1,6 +1,5 @@
 package net.bsfconsulting.bibliothequeapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,13 +20,7 @@ public class Book {
     private String author;
     private Integer publicationYear;
     private Boolean available;
-
     @OneToMany(mappedBy = "book",cascade = CascadeType.ALL,orphanRemoval = true)
-    @JsonBackReference
     private List<Loan> loans;
-
-     public boolean getAvailable(){
-        return available;
-    }
 
 }
