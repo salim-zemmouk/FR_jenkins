@@ -22,5 +22,4 @@ public class Book {
     private Boolean available;
     @OneToMany(mappedBy = "book",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Loan> loans;
-
 }
