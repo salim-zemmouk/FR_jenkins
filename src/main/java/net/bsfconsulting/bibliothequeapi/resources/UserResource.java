@@ -31,7 +31,7 @@ public class UserResource {
             @ApiResponse(responseCode = "400", description = "Requête invalide")
     })
     @PostMapping("/add")
-    public ResponseEntity<UserDto> addUser(@RequestParam UserDto userDto) {
+    public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto) {
         User user = UserMapper.INSTANCE.userDtoToUser(userDto);
         User savedUser = userService.saveUser(user);
         UserDto savedUserDto = UserMapper.INSTANCE.userToUserDto(savedUser);
