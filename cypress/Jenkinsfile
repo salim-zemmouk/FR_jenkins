@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/FaresBssm/bibliothequeApi.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Install Cypress') {
+                    steps {
+                        sh 'npm install cypress --save-dev'
+                    }
+                }
+
+        stage('Run Cypress Tests') {
+            steps {
+                sh 'npx cypress run'
+            }
+        }
+
+
+    }
+
+    post {
+        always{
+            echo 'Pipeline terminé'
+        }
+    }
+}
