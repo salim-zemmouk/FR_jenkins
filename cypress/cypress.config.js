@@ -2,6 +2,13 @@ const { defineConfig } = require("cypress");
 const { Client } = require('pg');
 require('dotenv').config()
 module.exports = defineConfig({
+  reporter: 'mochawesome',
+  reporterOptions: {
+    reportDir: 'cypress/screenshots',
+    overwrite: true,
+    html: true,
+    json: false
+  },
   e2e: {
     setupNodeEvents(on, config) {
       // Définir la tâche `queryDatabase` ici
@@ -18,17 +25,15 @@ module.exports = defineConfig({
           return client.connect()
               .then(() => client.query(query, values))
               .then((res) => {
-                client.end(); // Fermer la connexion après la requête
-                return res.rows; // Retourner les résultats
+                client.end();
+                return res.rows;
               })
               .catch((err) => {
-                client.end(); // Fermer la connexion en cas d'erreur
-                throw err; // Propager l'erreur pour que Cypress la capture
+                client.end();
+                throw err;
               });
         },
       });
-
-      // Retournez la configuration mise à jour
       return config;
     },
   },
