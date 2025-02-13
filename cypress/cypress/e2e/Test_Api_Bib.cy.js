@@ -159,7 +159,8 @@ describe('Test BibliothequeAPI', () => {
       expect(response.body).to.have.property("id");
       expect(response.body).to.have.property("loanDate");
       expect(response.body).to.have.property("returnDate");
-      expect(response.body.returnDate).to.eq("2025-02-11")
+      const systemDate = new Date().toISOString().split('T')[0];
+      expect(response.body.returnDate).to.eq(systemDate)
     })
   })
   });

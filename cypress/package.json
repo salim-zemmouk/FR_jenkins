@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx cypress run --reporter mochawesome"
   },
-  "author": "",
+  "author": "Salim@Z",
   "license": "ISC",
-  "description": "",
+  "description": "Test Api Bibliothèque",
   "devDependencies": {
-    "cypress": "^14.0.1"
+    "cypress": "^14.0.1",
+    "mochawesome": "^7.1.3"
   }
 }
