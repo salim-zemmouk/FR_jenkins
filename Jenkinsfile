@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Check if npm is installed') {
             steps {
-                command -v npm > /dev/null 2>&1 || echo "npm non installé"
+               sh 'command -v npm > /dev/null 2>&1 || echo npm non installé'
             }
         }
 
