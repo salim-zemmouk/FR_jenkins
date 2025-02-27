@@ -1,16 +1,12 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:16' } // Utilise une image Docker Node.js officielle
+    }
 
     stages {
-        stage('Check if npm is installed') {
+        stage('Check Node.js') {
             steps {
-               sh 'command -v npm > /dev/null 2>&1 || echo npm non installé'
-            }
-        }
-
-        stage('Check npm version') {
-            steps {
-                sh 'npm -v'
+                sh 'node -v'
             }
         }
     }
